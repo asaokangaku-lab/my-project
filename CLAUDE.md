@@ -4,14 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Status
 
-This repository is newly initialized and contains no source code yet. The only file present is `README.md` with the project title `my-project`.
+This repository hosts a PowerShell script that exports payment-request PDFs
+from MJSFX4Web (menu FLW300200, "支払申請書 個人及び法人源泉対象取引").
 
-## Getting Started
+## Tech Stack
 
-No build system, test framework, linter, or source code has been configured. When adding the first code, update this file with:
+- PowerShell 5.1 / 7+ (no external dependencies)
 
-- The tech stack and language(s) chosen
-- How to install dependencies
-- How to build, run, lint, and test the project (including how to run a single test)
-- The high-level architecture and entry points
-- Any key conventions or patterns to follow
+## Entry point
+
+- `Export-PaymentRequestPdf.ps1` — CLI that logs into MJSFX4Web and
+  downloads the PDF for a given request number. See `README.md` for usage.
+
+## Conventions
+
+- The MJS WebAPI request/response shapes are not officially documented in
+  this repo; placeholders are marked with `TODO` comments and must be
+  adjusted to match the deployed FX4 environment.
+- Passwords are taken as `SecureString` (or prompted) — never hard-code
+  credentials in the script or commit them.
